@@ -1,0 +1,487 @@
+<?php
+session_start();
+date_default_timezone_set('Etc/UTC');
+$nombre=$_POST['nombre'];
+$mensaje=$_POST['mensaje'];
+$email=$_POST['email'];
+$asunto=$_POST['asunto'];
+
+require 'PHPMailer-master/PHPMailerAutoload.php';
+
+
+   $mail = new PHPMailer();
+
+   $mail->IsSMTP();
+   $mail->SMTPAuth = true;
+   $mail->Host = 'mail.ajirasoftware.cl';
+   $mail->SMTPSecure = 'ssl'; 
+   $mail->Port = 465;
+/*$mail->SMTPSecure = 'tls';
+  $mail->Host = 'smtp.gmail.com';
+  $mail->Port = 587; */
+  //$mail->Port = 465;
+  
+   // aqui va el correo y contraseña de quien envia el correo
+   $mail->Username = 'contacto@ajirasoftware.cl';
+   $mail->Password = 'mucuruba815'; 
+  
+   // *******************************************************
+  $mail->IsHTML(true);
+  $mail->From = 'contacto@ajirasoftware.cl';
+  $mail->FromName = 'Ajira Systems C.A';
+
+  $mail->AddAddress('contacto@ajirasoftware.cl');
+  $mail->addReplyTo($_POST['email']);
+  $mail->addCCO('leidyrico12@gmail.com');
+  $mail->addCCO('jaouking@gmail.com');
+  $mail->Subject ='Ajira Software C.A';
+  $mail->Body = '
+      <div style="
+        border:1px solid #d6d2d2;
+        border-radius:5px;
+        padding:10px;
+        width:800px;
+        heigth:300px;
+      ">
+      <center>
+        
+      <h2> Hemos recibido un mensaje de Ajira Systems C.A</h2>
+      </center>
+      
+      <p>'.$mensaje.'</p>
+      <p> Enviado por: '.$nombre.' </p>
+      <p> Correo: '.$email.' </p>
+      </div>
+
+    ';
+  $mail->Send(); 
+        
+
+?>
+<html class="no-js">
+    <head>
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="icon" href="images/ajira-icon.png">
+        <title>Ajira Software</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        <!-- Template CSS Files
+        ================================================== -->
+        <!-- Twitter Bootstrs CSS -->
+        <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+        <!-- Ionicons Fonts Css -->
+        <link rel="stylesheet" href="plugins/ionicons/ionicons.min.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="plugins/animate-css/animate.css">
+        <!-- Hero area slider css-->
+        <link rel="stylesheet" href="plugins/slider/slider.css">
+        <!-- owl craousel css -->
+        <link rel="stylesheet" href="plugins/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="plugins/owl-carousel/owl.theme.css">
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="plugins/facncybox/jquery.fancybox.css">
+        <!-- template main css file -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+
+        <!--
+        ==================================================
+        Header Section Start
+        ================================================== -->
+        <header id="top-bar" class="navbar-fixed-top animated-header">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- responsive nav button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <!-- /responsive nav button -->
+                    
+                    <!-- logo -->
+                    <div class="navbar-brand">
+                        <a href="index.html" >
+                            <img src="images/logo.png" alt="">
+                        </a>
+                    </div>
+                    <!-- /logo -->
+                </div>
+                <!-- main menu -->
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                    <div class="main-menu">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="index.html" >Inicio</a>
+                            </li>
+                            <li><a href="about.html">Nosotros</a></li>
+                            <li><a href="software.html">Software</a></li>
+                            <li><a href="design.html">Diseño</a></li>
+                            <li><a href="security.html">Seguridad</a></li>
+                            <li><a href="contact.html">Contacto</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- /main nav -->
+            </div>
+        </header>
+        
+
+<!--
+==================================================
+Slider Section Start
+================================================== -->
+<section id="hero-area" >
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="block wow fadeInUp" data-wow-delay=".3s">
+                <!-- Slider -->
+                <section class="cd-intro">
+                    <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
+                    <span>SOLUCIONES INNOVADORAS EN</span><br>
+                    <span class="cd-words-wrapper">
+                        <b class="is-visible">SOFTWARE</b>
+                        <b>DISEÑO</b>
+                        <b>HARDWARE</b>
+                        <b>SEGURIDAD</b>
+                    </span>
+                    </h1>
+                    </section> <!-- cd-intro -->
+                    <!-- /.slider -->
+                    <h2 class="wow fadeInUp animated" data-wow-delay=".6s" >
+                        Con más de 6 años de experiencia en los mercados de América Latina, <b>Ajira Software</b>,<br> es la solución de apoyo tecnológico para las Grandes y Pequeñas Empresas.
+                    </h2>
+                    <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green" data-wow-delay=".9s" href="#works" data-section="#works">Conócenos más!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#main-slider-->
+
+<!--
+==================================================
+About Section Start
+================================================== -->
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
+                    <h2>
+                    SOBRE NOSOTROS
+                    </h2>
+                    <p>
+                        Ajira Software, es una empresa con operaciones en América Latina, creada con la finalidad de ofrecer una amplia gama de servicios tecnológicos, con más de 12 años de experiencia en áreas de tecnología e informática, implementando soluciones basadas en la innovación, creatividad, estrategia y seguridad.
+
+                    </p>
+                    <p>
+                         Nuestra misión es proveer servicios tecnológicos e innovadores de calidad para el mercado mundial, sobre plataformas de último nivel y personal calificado, con la visión de ser la empresa líder en prestación de servicios tecnológicos del mercado, ofreciendo a nuestros clientes seguridad y confianza apostando a los valores de honestidad, transparencia, compromiso y apoyo. 
+                    </p>
+                </div>
+                
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
+                    <img src="images/about/about.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!-- /#about -->
+
+
+<!--
+==================================================
+Portfolio Section Start
+================================================== -->
+<section id="works" class="works">
+    <div class="container">
+        <div class="section-heading">
+            <h1 class="title wow fadeInDown" data-wow-delay=".3s">ÁREAS DE TRABAJO</h1>
+            <p class="wow fadeInDown" data-wow-delay=".5s">
+                OFRECEMOS UNA GAMA DE SERVICIOS TECNOLÓGICOS, CONTAMOS CON AMPLIA EXPERIENCIA PROFESIONAL  
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-xs-12">
+                <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                    <div class="img-wrapper">
+                        <img src="images/portfolio/item-1.jpg" class="img-responsive" alt="this is a title" >
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a target="_blank" href="single-portfolio.html">Detalle</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                    <h4>
+                    <a href="#">
+                        Fábrica de Software
+                    </a>
+                    </h4>
+                    <p>
+                        Desarrollo e implantación
+                    </p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <div class="img-wrapper">
+                        <img src="images/portfolio/item-2.jpg" class="img-responsive" alt="this is a title" >
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a target="_blank" href="single-portfolio.html">Detalle</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                    <h4>
+                    <a href="#">
+                        Hardware
+                    </a>
+                    </h4>
+                    <p>
+                        Soporte técnico y asesoría.
+                    </p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <div class="img-wrapper">
+                        <img src="images/portfolio/item-3.jpg" class="img-responsive" alt="" >
+                        <div class="overlay">
+                            <div class="buttons">
+                               <a target="_blank" href="single-portfolio.html">Detalle</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                    <h4>
+                    <a href="#">
+                        Diseño Gráfico
+                    </a>
+                    </h4>
+                    <p>
+                        Logotipos e identidad empresarial.
+                    </p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="600ms">
+                    <div class="img-wrapper">
+                        <img src="images/portfolio/item-4.jpg" class="img-responsive" alt="" >
+                        <div class="overlay">
+                            <div class="buttons">
+                               <a target="_blank" href="single-portfolio.html">Detalle</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                    <h4>
+                    <a href="#">
+                        Seguridad & CCTV
+                    </a>
+                    </h4>
+                    <p>
+                        Servicio de seguridad. Cámaras
+                    </p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section> <!-- #works -->
+<!--
+==================================================
+Portfolio Section Start
+================================================== -->
+<section id="feature">
+    <div class="container">
+        <div class="section-heading">
+            <h1 class="title wow fadeInDown" data-wow-delay=".3s">EL VALOR DE AJIRA SOFTWARE</h1>
+            <p class="wow fadeInDown" data-wow-delay=".5s">
+                Queremos ser reconocidos y admirados como un referente en el mundo tecnológico, 
+                <p class="wow fadeInDown" data-wow-delay=".7s">EXCEDIENDO LAS EXPECTATIVAS DEL CLIENTE DE MANERA PERMANENTE.</p>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-xs-12">
+                <div class="media wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                    <div class="media-left">
+                        <div class="icon">
+                            <i class="ion-ios-flask-outline"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Estrategia</h4>
+                    <p>Implantamos modelos de gestión, basados en las mejores prácticas y estándares del mercado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xs-12">
+                <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="600ms">
+                    <div class="media-left">
+                        <div class="icon">
+                            <i class="ion-ios-lightbulb-outline"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Metodología Ágil</h4>
+                        <p>Potenciamos la flexibilidad, la rapidez y el trabajo en equipo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xs-12">
+                <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="900ms">
+                    <div class="media-left">
+                        <div class="icon">
+                            <i class="ion-ios-lightbulb-outline"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Aprendizaje</h4>
+                        <p>Constante aprendizaje orientado a la mejora continua y aporta valor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-xs-12">
+                <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1200ms">
+                    <div class="media-left">
+                        <div class="icon">
+                            <i class="ion-ios-americanfootball-outline"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">WebPay</h4>
+                        <p>Ofrecemos servicio de integración WebPay plus integral, paypal y otros medios de pago.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xs-12">
+                <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1500ms">
+                    <div class="media-left">
+                        <div class="icon">
+                            <i class="ion-ios-keypad-outline"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Soporte técnico</h4>
+                        <p>Asistencia técnica y/o asesoramiento profesional.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xs-12">
+                <div class="media wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="1800ms">
+                    <div class="media-left">
+                        <div class="icon">
+                            <i class="ion-ios-barcode-outline"></i>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Innovación</h4>
+                        <p>Nos enfocamos en el impulso de nuevas tecnologías al servicio de la eficiencia y satisfacción del cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!-- /#feature -->
+
+
+            <!--
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+            <section id="call-to-action" style="background: #245a88bf">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">DESEAS CONTACTARNOS</h1>
+                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">ESTAMOS AQUÍ PARA AYUDARTE</p>
+                                <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">CONTÁCTANOS</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <!--
+            ==================================================
+            Footer Section Start
+            ================================================== -->
+            <footer id="footer">
+                <div class="container">
+                    <div class="col-md-8">
+                        <p class="copyright">Copyright: <span><script>document.write(new Date().getFullYear())</script></span> Diseñado y desarrollado por <a href="http://www.Themefisher.com" target="_blank">Ajira Software</a>. <br> 
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- Social Media -->
+                        <ul class="social">
+                            <li>
+                                <a href="http://wwww.fb.com/themefisher" class="Facebook">
+                                    <i class="ion-social-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://wwww.twitter.com/themefisher" class="Twitter">
+                                    <i class="ion-social-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="Linkedin">
+                                    <i class="ion-social-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://wwww.fb.com/themefisher" class="Google Plus">
+                                    <i class="ion-social-googleplus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer> <!-- /#footer -->
+
+  <!-- Template Javascript Files
+  ================================================== -->
+  <!-- jquery -->
+  <script src="plugins/jQurey/jquery.min.js"></script>
+  <!-- Form Validation -->
+    <script src="plugins/form-validation/jquery.form.js"></script> 
+    <script src="plugins/form-validation/jquery.validate.min.js"></script>
+  <!-- owl carouserl js -->
+  <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <!-- wow js -->
+  <script src="plugins/wow-js/wow.min.js"></script>
+  <!-- slider js -->
+  <script src="plugins/slider/slider.js"></script>
+  <!-- Fancybox -->
+  <script src="plugins/facncybox/jquery.fancybox.js"></script>
+  <!-- template main js -->
+  <script src="js/main.js"></script>
+  </body>
+</html>
